@@ -1,0 +1,22 @@
+---
+- hosts: k8smaster
+  become: true
+  tasks:
+  - name: Initialize the Kubernetes cluster using kubeadm
+    command: kubeadm init --pod-network-cidr=10.244.0.0/16
+
+  - name: Setup kubeconfig for the rest of the installation
+    command: "{{ items }}"
+    with_items:
+      - mkdir -p /root/.kube
+      - cp -v /etc/kubernetes/admin.conf /root/.kube/config
+
+  - name: Install vxlan-flannel pod network
+    command: kubectl apply -f https://docs.projectcalico.org/v3.10/getting-started/kubernetes/installation/hosted/canal/canal.yaml
+
+  - name: Generate join command
+    command: kubeadm token create --print-join-command
+    register: join_command
+
+  - name: Copy join command to local file
+    local_action: copy content="{{ join_command.stdout_lines[0] }}" dest="./join-command"
