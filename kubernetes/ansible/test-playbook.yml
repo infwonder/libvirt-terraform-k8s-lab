@@ -1,0 +1,6 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: test hostname
+      shell: echo "ls"|xargs -l -i bash -c "{} -lrt {{ansible_default_ipv4.address}}"

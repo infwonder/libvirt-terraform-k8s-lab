@@ -60,6 +60,8 @@ resource "libvirt_domain" "k8s-master" {
 
   network_interface {
     network_name = "openvswitch"
+    hostname = "k8s-master"
+    mac = "52:54:00:aa:bb:00"
   }
 
   # IMPORTANT: this is a known bug on cloud images, since they expect a console
@@ -97,6 +99,8 @@ resource "libvirt_domain" "k8s-node01" {
 
   network_interface {
     network_name = "openvswitch"
+    hostname = "k8s-node01"
+    mac = "52:54:00:aa:bb:01"
   }
 
   # IMPORTANT: this is a known bug on cloud images, since they expect a console
@@ -134,6 +138,8 @@ resource "libvirt_domain" "k8s-node02" {
 
   network_interface {
     network_name = "openvswitch"
+    hostname = "k8s-node02"
+    mac = "52:54:00:aa:bb:02"
   }
 
   # IMPORTANT: this is a known bug on cloud images, since they expect a console

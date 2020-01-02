@@ -1,0 +1,20 @@
+---
+- hosts: k8snodes
+  become: true
+  tasks:
+    - name: Reset Cluster
+      command: "{{ item }}"
+      with_items:
+        - kubeadm reset -f
+        - rm -fr /root/.kube
+
+    - name: Sync join_command to node
+      copy: 
+        src: ./join-command
+        dest: /tmp/join-command
+        owner: root
+        group: root
+        mode: '0700'
+
+    - name: Join cluster with token in join_command
+      command: bash /tmp/join-command {{ ansible_default_ipv4.address }}
