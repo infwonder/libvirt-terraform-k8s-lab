@@ -1,0 +1,4 @@
+192.168.0.27  dnsserv.home.net dnsserv
+192.168.0.29  k8s-master-ubuntu.home.net k8s-master-ubuntu
+192.168.0.28  k8s-node01-ubuntu.home.net k8s-node01-ubuntu
+192.168.0.31  k8s-node02-ubuntu.home.net k8s-node02-ubuntu

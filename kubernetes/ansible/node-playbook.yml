@@ -8,6 +8,9 @@
         - kubeadm reset -f
         - rm -fr /root/.kube
 
+    - name: Set proper host name
+      command: "hostnamectl set-hostname {{ inventory_hostname.split('.')[0] }}"
+
     - name: Sync join_command to node
       copy: 
         src: ./join-command
@@ -17,4 +20,4 @@
         mode: '0700'
 
     - name: Join cluster with token in join_command
-      command: bash /tmp/join-command {{ ansible_default_ipv4.address }}
+      command: bash /tmp/join-command

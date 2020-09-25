@@ -11,8 +11,8 @@
   - name: Initialize the Kubernetes cluster using kubeadm
     command: kubeadm init --pod-network-cidr=10.244.0.0/16 --node-name k8s-master
 
-  - name: Install vxlan-flannel pod network
-    command: kubectl apply -f https://docs.projectcalico.org/v3.10/getting-started/kubernetes/installation/hosted/canal/canal.yaml
+  - name: Install canal-flannel CNI
+    command: kubectl apply -f https://docs.projectcalico.org/manifests/canal.yaml
     environment: 
       KUBECONFIG: /etc/kubernetes/admin.conf
 
