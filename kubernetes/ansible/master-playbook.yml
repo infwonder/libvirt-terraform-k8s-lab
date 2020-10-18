@@ -9,7 +9,7 @@
       - rm -fr /root/.kube
 
   - name: Initialize the Kubernetes cluster using kubeadm
-    command: kubeadm init --pod-network-cidr=10.244.0.0/16 --node-name k8s-master
+    command: kubeadm init --pod-network-cidr=10.244.0.0/16 --node-name k8s-master-ubuntu
 
   - name: Install canal-flannel CNI
     command: kubectl apply -f https://docs.projectcalico.org/manifests/canal.yaml

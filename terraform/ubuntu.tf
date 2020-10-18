@@ -60,7 +60,7 @@ resource "libvirt_domain" "k8s-master" {
 
   network_interface {
     network_name = "openvswitch"
-    hostname = "k8s-master"
+    hostname = "k8s-master-ubuntu"
     mac = "52:54:00:aa:bb:00"
   }
 
@@ -99,7 +99,7 @@ resource "libvirt_domain" "k8s-node01" {
 
   network_interface {
     network_name = "openvswitch"
-    hostname = "k8s-node01"
+    hostname = "k8s-node01-ubuntu"
     mac = "52:54:00:aa:bb:01"
   }
 
@@ -138,7 +138,7 @@ resource "libvirt_domain" "k8s-node02" {
 
   network_interface {
     network_name = "openvswitch"
-    hostname = "k8s-node02"
+    hostname = "k8s-node02-ubuntu"
     mac = "52:54:00:aa:bb:02"
   }
 
